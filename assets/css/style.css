@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap");
 
 /* --- Warm textured background --- */
 body {
@@ -70,21 +71,6 @@ p, li { font-size: 19px; }
 a { color: #2b2a78; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* --- Drop cap on first paragraph in main area --- */
-.wrapper p:first-of-type::first-letter,
-.container p:first-of-type::first-letter,
-.page-content p:first-of-type::first-letter,
-main p:first-of-type::first-letter,
-.markdown-body p:first-of-type::first-letter {
-  float: left;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 600;
-  font-size: 64px;
-  line-height: 0.9;
-  margin: 7px 10px 0 0;
-  color: #2a1f14;
-}
-
 /* Code blocks */
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -99,4 +85,19 @@ pre {
   border-radius: 12px;
   padding: 14px 16px;
   overflow: auto;
+}
+
+/* --- Main title (H1) --- */
+h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-variant: small-caps;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Remove link styling if theme wraps title in <a> */
+h1 a {
+  color: #333333 !important;
+  text-decoration: none !important;
+  pointer-events: none; /* makes it behave like plain text */
 }
