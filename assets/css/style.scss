@@ -1,0 +1,28 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Serif body font */
+body {
+  font-family: "Cormorant Garamond", "EB Garamond", "Georgia", serif;
+  font-size: 19px;
+  line-height: 1.75;
+  color: #111;
+  background: #fdfcf9;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  letter-spacing: 0.5px;
+}
+
+/* Links */
+a {
+  color: #3b2f8f;
+}
+
+code {
+  font-family: "Courier New", monospace;
+}
