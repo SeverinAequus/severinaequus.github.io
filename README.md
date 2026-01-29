@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
 # **Liber Luminis & Liber Umbrae**
 
 **No dance moves. No “above your grade” gatekeeping.**  
