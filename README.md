@@ -51,7 +51,7 @@ Instead: You get a specific perspective and analysis that places familiar concep
 
 [Read Liber Luminis in English](https://www.amazon.com/gp/product/B0GGJQPG1T)
 
-[Lee Liber Luminis en Español](https://www.amazon.com/gp/product/B0GGJQPG1T/)
+[Lee Liber Luminis en Español](https://www.amazon.com/dp/products/B0GJR5YV9T)
 
 ## **Liber Umbrae**
 
