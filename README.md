@@ -21,7 +21,7 @@ These books address the hard questions that you've been asking about and keep ge
 
 Well, I do have an idea and I want to share it with you. 
 
-Ultimately, you can decide whether you like my answers or not. They're generally in line with the respected innovators in this subject area. But where I diverge, it's done for very sound reasons. In the end, what you get by going along with what I'm saying is better than any "secret" anyone can bestow upon you. 
+Ultimately, you can decide whether you like my ideas or not. They're generally in line with the respected innovators in this subject area. But where I diverge, it's done for very sound reasons. In the end, what you get by going along with what I'm saying is better than any "secret" anyone can bestow upon you. 
 
 I offer: ***Internal consistency.***
 
