@@ -5,7 +5,7 @@
 **No dance moves. No “above your grade” gatekeeping.**  
 Just a coherent symbolic framework that answers the hard questions without leaving dangling mysteries and mental gymnastics.
 
-## The Straight-Talk Summary (I can't afford a marketing guy anyway)
+## The Straight-Talk Summary 
 
 ### Prerequisites (yes, really)
 These books are written with the assumption that you have some idea what the fuck is going on already. You don't have to have a fancy title, but you should have *at least* read Magick in Theory and Practice, The Book of the Law, and The Vision and the Voice. It's OK if you don't understand it all, but your eyeballs should have at least read the words. 
