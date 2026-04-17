@@ -43,6 +43,9 @@ If you go with the model described in these books, not only will you end up with
 
 ## **Liber Luminis**
 
+<a href="https://www.goodreads.com/book/show/246531717-liber-luminis" target="_blank" rel="noopener noreferrer">
+<img style="vertical-align: middle; margin-bottom: 0.5em" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Goodreads badge add plus"></a>
+
 Covers many of the less-discussed questions initiates often have early in their journey.\
 Describes exactly what you need to do to become an Adept and exactly how to do it (assuming that you have a copy of *Abramelin* already...)\
 No time wasted rehashing what a hundred other authors have already said.
@@ -54,6 +57,16 @@ Instead: You get a specific perspective and analysis that places familiar concep
 [Lee Liber Luminis en Español](https://www.amazon.com/dp/products/B0GJR5YV9T)
 
 ## **Liber Umbrae**
+
+<a href="https://www.goodreads.com/book/show/246517883-liber-umbrae" target="_blank" rel="noopener noreferrer">
+<img style="vertical-align: middle; margin-bottom: 0.5em" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Goodreads badge add plus"></a>
+
+<button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')" 
+        style="background:none;border:none;cursor:pointer;padding:0;display:inline-block;">
+  <img style="vertical-align:middle;margin-bottom:0.5em" 
+       src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" 
+       alt="Goodreads badge add plus">
+</button>
 
 This is where we examine the difficult questions using the framework built in *Liber Luminis* to make sense of it all.\
 This is also where the autobiographical subplot shows up in full force.
