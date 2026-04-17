@@ -61,12 +61,13 @@ Instead: You get a specific perspective and analysis that places familiar concep
 <a href="https://www.goodreads.com/book/show/246517883-liber-umbrae" target="_blank" rel="noopener noreferrer">
 <img style="vertical-align: middle; margin-bottom: 0.5em" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Goodreads badge add plus"></a>
 
-<button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')" 
+<!-- <button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')" 
         style="background:none;border:none;cursor:pointer;padding:0;display:inline-block;">
   <img style="vertical-align:middle;margin-bottom:0.5em" 
        src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" 
        alt="Goodreads badge add plus">
 </button>
+-->
 
 This is where we examine the difficult questions using the framework built in *Liber Luminis* to make sense of it all.\
 This is also where the autobiographical subplot shows up in full force.
