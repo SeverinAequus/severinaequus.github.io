@@ -35,6 +35,23 @@
   .publication-tabs, .publication-placeholder { display: none; }
   #publication-books[hidden] { display: block; }
 }
+
+/* Media tab style */
+
+.tab-media-entry {
+    margin-bottom: 1.5em;
+}
+
+.tab-media-entry h3 {
+    margin-bottom: 0.4em;
+}
+
+.tab-media-links {
+    display: flex;
+    gap: 1.25em;
+    flex-wrap: wrap;
+}
+  
 </style>
 
 <div class="publication-tabs" role="tablist" aria-label="Publications" hidden>
@@ -204,5 +221,127 @@ But here's the crazy thing about people: If you give them something for free, th
   tablist.hidden = false;
   revealLinkedPanel();
   window.addEventListener('hashchange', revealLinkedPanel);
+
+  //
+  // Dynamic builder for Media Tab
+  //
+  
+  <div id="media-list">
+    <p>Loading media...</p>
+  </div>
+
+  (async function () {
+    const owner = "SeverinAequus";
+    const repo  = "severinaequus.github.io";
+    const tag   = "media";
+
+    const container = document.getElementById("media-list");
+
+    try {
+        const response = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}`
+        );
+
+        if (!response.ok) {
+            throw new Error(`GitHub API returned ${response.status}`);
+        }
+
+        const release = await response.json();
+        const assets = release.assets;
+
+        // Map lowercase filename -> asset object
+        const assetMap = new Map();
+
+        for (const asset of assets) {
+            assetMap.set(asset.name.toLowerCase(), asset);
+        }
+
+        // PDFs define which essays appear.
+        const pdfs = assets
+            .filter(asset =>
+                asset.name.toLowerCase().endsWith(".pdf")
+            )
+            .sort((a, b) => {
+                const aTitle = displayTitle(a.name);
+                const bTitle = displayTitle(b.name);
+
+                return aTitle.localeCompare(bTitle, undefined, {
+                    numeric: true,
+                    sensitivity: "base"
+                });
+            });
+
+        if (pdfs.length === 0) {
+            container.innerHTML = "<p>No essays found.</p>";
+            return;
+        }
+
+        container.innerHTML = "";
+
+        for (const pdf of pdfs) {
+            const baseName = pdf.name.slice(0, -4);
+
+            const mp4 = assetMap.get(
+                `${baseName}.mp4`.toLowerCase()
+            );
+
+            const m4a = assetMap.get(
+                `${baseName}.m4a`.toLowerCase()
+            );
+
+            const entry = document.createElement("div");
+            entry.className = "tab-media-entry";
+
+            const title = document.createElement("h3");
+            title.textContent = displayTitle(pdf.name);
+            entry.appendChild(title);
+
+            const links = document.createElement("div");
+            links.className = "tab-media-links";
+
+            addLink(links, "PDF", pdf);
+
+            if (mp4) {
+                addLink(links, "Explainer Video", mp4);
+            }
+
+            if (m4a) {
+                addLink(links, "Deep Dive Podcast", m4a);
+            }
+
+            entry.appendChild(links);
+            container.appendChild(entry);
+        }
+
+    } catch (error) {
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Unable to load the essay library.</p>";
+    }
+
+
+    function displayTitle(filename) {
+        // Remove extension
+        const baseName = filename.replace(/\.[^.]+$/, "");
+
+        // Convert underscores to spaces
+        return baseName.replace(/_/g, " ");
+    }
+
+
+    function addLink(parent, text, asset) {
+        const link = document.createElement("a");
+
+        link.href = asset.browser_download_url;
+        link.textContent = text;
+
+        parent.appendChild(link);
+    }
+  })();
+</script>
+
+
+  
 }());
 </script>
