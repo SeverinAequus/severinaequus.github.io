@@ -319,11 +319,11 @@ But here's the crazy thing about people: If you give them something for free, th
             addLink(links, "PDF", pdf);
 
             if (mp4) {
-                addVideoPlayer(entry, mp4);
+                addMediaLink(links, "Explainer Video", mp4, "video");
             }
 
             if (m4a) {
-                addAudioPlayer(entry, m4a);
+                addMediaLink(links, "Deep Dive Podcast", m4a, "audio");
             }
 
             entry.appendChild(links);
@@ -356,33 +356,19 @@ But here's the crazy thing about people: If you give them something for free, th
         parent.appendChild(link);
     }
 
-    function addVideoPlayer(parent, asset) {
-        const label = document.createElement("div");
-        label.className = "media-player-label";
-        label.textContent = "Explainer Video";
+    function addMediaLink(parent, text, asset, type) {
+        const link = document.createElement("a");
 
-        const video = document.createElement("video");
-        video.controls = true;
-        video.preload = "metadata";
-        video.src = asset.browser_download_url;
+        link.href =
+            `/player.html?type=${type}` +
+            `&src=${encodeURIComponent(asset.browser_download_url)}` +
+            `&title=${encodeURIComponent(displayTitle(asset.name))}`;
 
-        parent.appendChild(label);
-        parent.appendChild(video);
-    }
+        link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noopener";
 
-
-    function addAudioPlayer(parent, asset) {
-        const label = document.createElement("div");
-        label.className = "media-player-label";
-        label.textContent = "Deep Dive Podcast";
-
-        const audio = document.createElement("audio");
-        audio.controls = true;
-        audio.preload = "metadata";
-        audio.src = asset.browser_download_url;
-
-        parent.appendChild(label);
-        parent.appendChild(audio);
+        parent.appendChild(link);
     }
   })();
 })();
