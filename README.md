@@ -1,3 +1,51 @@
+<style>
+.publication-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid #b9ad9d;
+}
+.publication-tabs[hidden], .publication-panel[hidden] { display: none; }
+.publication-tabs button {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.5rem;
+  border: 1px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-radius: 7px 7px 0 0;
+  background: transparent;
+  color: #2b2a78;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.publication-tabs button:hover { background: #e9e0d2; }
+.publication-tabs button[aria-selected="true"] {
+  background: #e9e0d2;
+  border-color: #b9ad9d;
+  border-bottom-color: #2b2a78;
+  color: #2a1f14;
+}
+.publication-tabs button:focus-visible,
+.publication-panel:focus-visible {
+  outline: 2px solid #2b2a78;
+  outline-offset: 3px;
+}
+@media print {
+  .publication-tabs, .publication-placeholder { display: none; }
+  #publication-books[hidden] { display: block; }
+}
+</style>
+
+<div class="publication-tabs" role="tablist" aria-label="Publications" hidden>
+  <button type="button" id="tab-books" role="tab" aria-controls="publication-books" aria-selected="true">Books</button>
+  <button type="button" id="tab-two" role="tab" aria-controls="publication-two" aria-selected="false" tabindex="-1">Tab 2</button>
+  <button type="button" id="tab-three" role="tab" aria-controls="publication-three" aria-selected="false" tabindex="-1">Tab 3</button>
+</div>
+
+<div id="publication-books" class="publication-panel" markdown="1">
+
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 # **Liber Luminis & Liber Umbrae**
@@ -105,3 +153,72 @@ You may not modify, remix, or use this material commercially.
 License details: https://creativecommons.org/licenses/by-nc-nd/4.0/
 
 Note: The books Liber Luminis and Liber Umbrae are covered under full copyright terms.
+
+
+
+</div>
+
+<div id="publication-two" class="publication-panel publication-placeholder">
+  <h2>Tab 2</h2>
+  <p>Placeholder content for the second tab.</p>
+</div>
+
+<div id="publication-three" class="publication-panel publication-placeholder">
+  <h2>Tab 3</h2>
+  <p>Placeholder content for the third tab.</p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const tablist = document.querySelector('.publication-tabs');
+  const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+
+  function activate(index, focus) {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].hidden = i !== index;
+    });
+    if (focus) tabs[index].focus();
+  }
+
+  tabs.forEach((tab, index) => {
+    panels[index].setAttribute('role', 'tabpanel');
+    panels[index].setAttribute('aria-labelledby', tab.id);
+    panels[index].tabIndex = 0;
+    tab.addEventListener('click', () => activate(index, false));
+    tab.addEventListener('keydown', event => {
+      let next;
+      switch (event.key) {
+        case 'ArrowRight': next = (index + 1) % tabs.length; break;
+        case 'ArrowLeft': next = (index + tabs.length - 1) % tabs.length; break;
+        case 'Home': next = 0; break;
+        case 'End': next = tabs.length - 1; break;
+        default: return;
+      }
+      event.preventDefault();
+      activate(next, true);
+    });
+  });
+
+  function revealLinkedPanel() {
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); }
+    catch (_) { return; }
+    if (!id) return;
+    const target = document.getElementById(id);
+    const index = panels.findIndex(panel => target && panel.contains(target));
+    if (index !== -1) {
+      activate(index, false);
+      target.scrollIntoView();
+    }
+  }
+
+  activate(0, false);
+  tablist.hidden = false;
+  revealLinkedPanel();
+  window.addEventListener('hashchange', revealLinkedPanel);
+}());
+</script>
