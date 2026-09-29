@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Media Player</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 2em;
+            background: #111;
+            color: #eee;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        audio {
+            display: block;
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+
+<div id="player"></div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    const type  = params.get("type");
+    const src   = params.get("src");
+    const title = params.get("title") || "Media";
+
+    document.title = title;
+    document.getElementById("title").textContent = title;
+
+    const container = document.getElementById("player");
+
+    if (src && (type === "video" || type === "audio")) {
+        const player = document.createElement(type);
+
+        player.src = src;
+        player.controls = true;
+        player.autoplay = true;
+        player.preload = "metadata";
+
+        container.appendChild(player);
+    }
+    else {
+        container.textContent = "Invalid media URL.";
+    }
+</script>
+
+</body>
+</html>
