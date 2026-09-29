@@ -51,6 +51,26 @@
     gap: 1.25em;
     flex-wrap: wrap;
 }
+
+.media-player-label {
+    margin-top: 0.8em;
+    margin-bottom: 0.25em;
+    font-weight: 600;
+}
+
+.tab-media-entry video {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1em;
+}
+
+.tab-media-entry audio {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1em;
+}
   
 </style>
 
@@ -299,11 +319,11 @@ But here's the crazy thing about people: If you give them something for free, th
             addLink(links, "PDF", pdf);
 
             if (mp4) {
-                addLink(links, "Explainer Video", mp4);
+                addVideoPlayer(entry, mp4);
             }
 
             if (m4a) {
-                addLink(links, "Deep Dive Podcast", m4a);
+                addAudioPlayer(entry, m4a);
             }
 
             entry.appendChild(links);
@@ -334,6 +354,35 @@ But here's the crazy thing about people: If you give them something for free, th
         link.textContent = text;
 
         parent.appendChild(link);
+    }
+
+    function addVideoPlayer(parent, asset) {
+        const label = document.createElement("div");
+        label.className = "media-player-label";
+        label.textContent = "Explainer Video";
+
+        const video = document.createElement("video");
+        video.controls = true;
+        video.preload = "metadata";
+        video.src = asset.browser_download_url;
+
+        parent.appendChild(label);
+        parent.appendChild(video);
+    }
+
+
+    function addAudioPlayer(parent, asset) {
+        const label = document.createElement("div");
+        label.className = "media-player-label";
+        label.textContent = "Deep Dive Podcast";
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.preload = "metadata";
+        audio.src = asset.browser_download_url;
+
+        parent.appendChild(label);
+        parent.appendChild(audio);
     }
   })();
 })();
