@@ -55,14 +55,6 @@ Just a coherent symbolic framework that answers the hard questions without leavi
 
 ## The Straight-Talk Summary 
 
-### Prerequisites (yes, really)
-These books are written with the assumption that you have some idea what the fuck is going on already. You don't have to have a fancy title, but you should have *at least* read Magick in Theory and Practice, The Book of the Law, and The Vision and the Voice. It's OK if you don't understand it all, but your eyeballs should have at least read the words. 
-
-Likewise, you should have made up your mind that this is work you value and wish to pursue. 
-
-You need not change your name on Facebook to *"Frater Frazzlepants"* but you should be in some way connected to the occult community either by formal membership or online resources (*I* am **not** your online resource!).
-
-### General Remarks
 These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of shit. 
 
 These books address the hard questions that you've been asking about and keep getting deflected with bullshit like, *"It's above your degree/grade/whatever."* That's just code for *"I have no fuckin' idea."* 
