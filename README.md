@@ -169,7 +169,7 @@ But here's the crazy thing about people: If you give them something for free, th
 
 <div id="publication-media" class="publication-panel publication-placeholder">
   <p id=help-text>
-    PDF links will download the file to your device and invoke your default PDF viewer, if configured.
+    PDF links will download the file to your device and invoke your default PDF viewer, if configured.<br>
     Video and audio links will open in a new tab and play using your browser's native player.
   </p>
   <div id="media-list">
