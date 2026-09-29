@@ -148,8 +148,9 @@ But here's the crazy thing about people: If you give them something for free, th
 </div>
 
 <div id="publication-media" class="publication-panel publication-placeholder">
-  <h2>Tab 2</h2>
-  <p>Placeholder content for the second tab.</p>
+  <div id="media-list">
+    <p>Loading media...</p>
+  </div>
 </div>
 
 <div id="publication-content" class="publication-panel publication-placeholder">
@@ -225,10 +226,6 @@ But here's the crazy thing about people: If you give them something for free, th
   //
   // Dynamic builder for Media Tab
   //
-  
-  <div id="media-list">
-    <p>Loading media...</p>
-  </div>
 
   (async function () {
     const owner = "SeverinAequus";
