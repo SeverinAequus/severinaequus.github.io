@@ -413,7 +413,7 @@
             const links = document.createElement("div");
             links.className = "tab-media-links";
 
-            addLink(links, "PDF", pdf);
+            addMediaDocumentLink(links, "PDF", pdf);
 
             if (mp4) {
                 addMediaLink(links, "Explainer Video", mp4, "video");
@@ -434,7 +434,6 @@
             "<p>Unable to load the essay library.</p>";
     }
 
-
     function displayTitle(filename) {
         // Remove extension
         const baseName = filename.replace(/\.[^.]+$/, "");
@@ -443,12 +442,13 @@
         return baseName.replace(/_/g, " ");
     }
 
-
-    function addLink(parent, text, asset) {
+    function addMediaDocumentLink(parent, text, asset) {
         const link = document.createElement("a");
 
-        link.href = asset.browser_download_url;
+        link.href = `/bio-docs/${encodeURIComponent(asset.name)}`;
         link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noopener";
 
         parent.appendChild(link);
     }
@@ -717,7 +717,7 @@
                     ? "PDF"
                     : "TXT";
 
-            addExtraLink(links, documentLabel, doc);
+            addExtraDocumentLink(links, documentLabel, doc);
 
             if (mp4) {
                 addExtraMediaLink(
@@ -748,23 +748,22 @@
             "<p>Unable to load additional content.</p>";
     }
 
-
     function displayExtraTitle(filename) {
         const baseName = filename.replace(/\.[^.]+$/, "");
 
         return baseName.replace(/_/g, " ");
     }
 
-
-    function addExtraLink(parent, text, asset) {
+    function addExtraDocumentLink(parent, text, asset) {
         const link = document.createElement("a");
 
-        link.href = asset.browser_download_url;
+        link.href = `/bio-docs/${encodeURIComponent(asset.name)}`;
         link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noopener";
 
         parent.appendChild(link);
     }
-
 
     function addExtraMediaLink(parent, text, asset, type) {
         const link = document.createElement("a");
