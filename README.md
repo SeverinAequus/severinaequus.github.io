@@ -445,7 +445,7 @@
     function addMediaDocumentLink(parent, text, asset) {
         const link = document.createElement("a");
 
-        link.href = `/bio-docs/${encodeURIComponent(asset.name)}`;
+        link.href = `/media-docs/${encodeURIComponent(asset.name)}`;
         link.textContent = text;
         link.target = "_blank";
         link.rel = "noopener";
@@ -757,7 +757,7 @@
     function addExtraDocumentLink(parent, text, asset) {
         const link = document.createElement("a");
 
-        link.href = `/bio-docs/${encodeURIComponent(asset.name)}`;
+        link.href = `/extra-docs/${encodeURIComponent(asset.name)}`;
         link.textContent = text;
         link.target = "_blank";
         link.rel = "noopener";
