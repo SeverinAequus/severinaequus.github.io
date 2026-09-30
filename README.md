@@ -77,7 +77,8 @@
 <div class="publication-tabs" role="tablist" aria-label="Publications" hidden>
   <button type="button" id="tab-books" role="tab" aria-controls="publication-books" aria-selected="true">Books</button>
   <button type="button" id="tab-media" role="tab" aria-controls="publication-media" aria-selected="false" tabindex="-1">Media</button>
-  <button type="button" id="tab-content" role="tab" aria-controls="publication-content" aria-selected="false" tabindex="-1">Additional Content</button>
+  <button type="button" id="tab-bio" role="tab" aria-controls="publication-bio" aria-selected="false" tabindex="-1">Media</button>
+  <button type="button" id="tab-extras" role="tab" aria-controls="publication-extras" aria-selected="false" tabindex="-1">Additional Content</button>
 </div>
 
 <div id="publication-books" class="publication-panel" markdown="1">
@@ -177,7 +178,13 @@ But here's the crazy thing about people: If you give them something for free, th
   </div>
 </div>
 
-<div id="publication-content" class="publication-panel publication-placeholder">
+<div id="publication-bio" class="publication-panel publication-placeholder">
+  <div id="bio-list">
+    <p>Loading autobiographical content...</p>
+  </div>
+</div>
+
+<div id="publication-extras" class="publication-panel publication-placeholder">
   <div id="extra-list">
     <p>Loading additional content...</p>
   </div>
@@ -378,7 +385,148 @@ But here's the crazy thing about people: If you give them something for free, th
   })();
 
   //
-  // Dynamic builder for Additional Content Tab
+  // Dynamic builder for Bio tab
+  //
+
+  (async function () {
+    const owner = "SeverinAequus";
+    const repo  = "severinaequus.github.io";
+    const tag   = "bio";
+
+    const container = document.getElementById("bio-list");
+
+    try {
+        const response = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}`
+        );
+
+        if (!response.ok) {
+            throw new Error(`GitHub API returned ${response.status}`);
+        }
+
+        const release = await response.json();
+        const assets = release.assets;
+
+        // Map lowercase filename -> asset object
+        const assetMap = new Map();
+
+        for (const asset of assets) {
+            assetMap.set(asset.name.toLowerCase(), asset);
+        }
+
+        // PDFs define which entries appear.
+        const pdfs = assets
+            .filter(asset =>
+                asset.name.toLowerCase().endsWith(".pdf")
+            )
+            .sort((a, b) => {
+                const aTitle = displayBioTitle(a.name);
+                const bTitle = displayBioTitle(b.name);
+
+                return aTitle.localeCompare(bTitle, undefined, {
+                    numeric: true,
+                    sensitivity: "base"
+                });
+            });
+
+        if (pdfs.length === 0) {
+            container.innerHTML = "<p>No biographical content found.</p>";
+            return;
+        }
+
+        container.innerHTML = "";
+
+        for (const pdf of pdfs) {
+            const baseName = pdf.name.slice(0, -4);
+
+            const mp4 = assetMap.get(
+                `${baseName}.mp4`.toLowerCase()
+            );
+
+            const m4a = assetMap.get(
+                `${baseName}.m4a`.toLowerCase()
+            );
+
+            const entry = document.createElement("div");
+            entry.className = "tab-media-entry";
+
+            const title = document.createElement("h3");
+            title.textContent = displayBioTitle(pdf.name);
+            entry.appendChild(title);
+
+            const links = document.createElement("div");
+            links.className = "tab-media-links";
+
+            addBioDocumentLink(links, "PDF", pdf);
+
+            if (mp4) {
+                addBioMediaLink(
+                    links,
+                    "Explainer Video",
+                    mp4,
+                    "video"
+                );
+            }
+
+            if (m4a) {
+                addBioMediaLink(
+                    links,
+                    "Deep Dive Podcast",
+                    m4a,
+                    "audio"
+                );
+            }
+
+            entry.appendChild(links);
+            container.appendChild(entry);
+        }
+
+    } catch (error) {
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Unable to load biographical content.</p>";
+    }
+
+
+    function displayBioTitle(filename) {
+        const baseName = filename.replace(/\.[^.]+$/, "");
+
+        return baseName.replace(/_/g, " ");
+    }
+
+
+    function addBioDocumentLink(parent, text, asset) {
+        const link = document.createElement("a");
+
+        link.href = `/bio-docs/${encodeURIComponent(asset.name)}`;
+        link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noopener";
+
+        parent.appendChild(link);
+    }
+
+
+    function addBioMediaLink(parent, text, asset, type) {
+        const link = document.createElement("a");
+
+        link.href =
+            `/player.html?type=${type}` +
+            `&src=${encodeURIComponent(asset.browser_download_url)}` +
+            `&title=${encodeURIComponent(displayBioTitle(asset.name))}`;
+
+        link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noopener";
+
+        parent.appendChild(link);
+    }
+  })();
+
+  
+  //
+  // Dynamic builder for Additional Content tab
   //
 
   (async function () {
