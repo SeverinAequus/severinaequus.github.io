@@ -250,7 +250,7 @@
 
 <div id="publication-media" class="publication-panel publication-placeholder">
   <h3 id="media-title" style="text-align: center">
-    Excerpts and Media
+    Excerpts and Media<br>
     Generated from Liber Luminis and Liber Umbrae
   </h3>
   <p id="media-help-text">
