@@ -153,15 +153,15 @@
 
 <h2 style="text-align: center"><strong>AI Notebook [FREE]</strong></h2>
 
-<p>
-  The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
-  It also includes tools that you can use to create documents and media from the source of both books and the supplements.
-</p>
-
 <p style="text-align: center">
   <a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea"
      target="_blank"
      rel="noopener noreferrer">Google Notebook</a>
+</p>
+
+<p>
+  The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
+  It also includes tools that you can use to create documents and media from the source of both books and the supplements.
 </p>
 
 <h2 style="text-align: center"><strong>Liber Luminis</strong></h2>
