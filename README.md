@@ -121,6 +121,13 @@ If you go with the model described in these books, not only will you end up with
 - An open-ended system that you can continue to expand upon with new ideas forever.
 - Comedic relief + a piss-poor attitude so it doesn’t sound anything like Crowley!
 
+## **AI Workbook [FREE]**
+
+The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
+It also includes tools that you can use to create documents and media from the source of both books and the supplements.
+
+<a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea" target="_blank" rel="noopener noreferrer">Google Notebook</a>
+
 ## **Liber Luminis**
 
 <a href="https://www.goodreads.com/book/show/246531717-liber-luminis" target="_blank" rel="noopener noreferrer">
