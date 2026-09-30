@@ -158,7 +158,7 @@
   It also includes tools that you can use to create documents and media from the source of both books and the supplements.
 </p>
 
-<p>
+<p style="text-align: center">
   <a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea"
      target="_blank"
      rel="noopener noreferrer">Google Notebook</a>
