@@ -254,9 +254,9 @@
 </div>
 
 <div id="publication-media" class="publication-panel publication-placeholder">
-  <p id="help-text">
-    PDF links will download the file to your device and invoke your default PDF viewer, if configured.<br>
-    Video and audio links will open in a new tab and play using your browser's native player.
+  <p id="media-help-text">
+    PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
+    Video and audio links will open in a new tab and play using your browser's native media player.
   </p>
   <div id="media-list">
     <p>Loading media...</p>
@@ -264,12 +264,21 @@
 </div>
 
 <div id="publication-bio" class="publication-panel publication-placeholder">
+  <p id="bio-help-text">
+    PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
+    Video and audio links will open in a new tab and play using your browser's native media player.
+  </p>
   <div id="bio-list">
     <p>Loading autobiographical content...</p>
   </div>
 </div>
 
 <div id="publication-extras" class="publication-panel publication-placeholder">
+  <p id="extras-help-text">
+    PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
+    TXT links will open as plain text in a new tab.<br>
+    Video and audio links will open in a new tab and play using your browser's native media player.
+  </p>
   <div id="extra-list">
     <p>Loading additional content...</p>
   </div>
