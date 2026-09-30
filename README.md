@@ -253,9 +253,9 @@
 </div>
 
 <div id="publication-media" class="publication-panel publication-placeholder">
-  <p id="media-title" style="text-align: center">
+  <h2 id="media-title" style="text-align: center">
     Excerpts and Media Generated from Liber Luminis and Liber Umbrae
-  </p>
+  </h2>
   <p id="media-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
     Video and audio links will open in a new tab and play using your browser's native media player.
@@ -266,9 +266,9 @@
 </div>
 
 <div id="publication-bio" class="publication-panel publication-placeholder">
-  <p id="bio-title" style="text-align: center">
+  <h2 id="bio-title" style="text-align: center">
     Autobiographical Stories
-  </p>
+  </h2>
   <p id="bio-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
     Video and audio links will open in a new tab and play using your browser's native media player.
@@ -279,9 +279,9 @@
 </div>
 
 <div id="publication-extras" class="publication-panel publication-placeholder">
-  <p id="extras-title" style="text-align: center">
+  <h2 id="extras-title" style="text-align: center">
     Additional Philosophical and Relationship Essays
-  </p>
+  </h2>
   <p id="extras-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
     TXT links will open as plain text in a new tab.<br>
