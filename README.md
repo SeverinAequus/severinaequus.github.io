@@ -74,6 +74,8 @@
   
 </style>
 
+<link rel="icon" href="/favicon.ico" sizes="any">
+
 <div class="publication-tabs" role="tablist" aria-label="Publications" hidden>
   <button type="button" id="tab-books" role="tab" aria-controls="publication-books" aria-selected="true">Books</button>
   <button type="button" id="tab-media" role="tab" aria-controls="publication-media" aria-selected="false" tabindex="-1">Media</button>
