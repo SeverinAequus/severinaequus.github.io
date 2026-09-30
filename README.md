@@ -160,6 +160,14 @@
 
 <h2 style="text-align: center"><strong>Liber Luminis</strong></h2>
 
+<p style="text-align: center">
+  <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a>
+</p>
+
+<p style="text-align: center">
+  <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a>
+</p>
+
 <p>
   <a href="https://www.goodreads.com/book/show/246531717-liber-luminis"
      target="_blank"
@@ -182,15 +190,15 @@
   Instead: You get a specific perspective and analysis that places familiar concepts into the framework while the framework itself is being built.
 </p>
 
-<p style="text-align: center">
-  <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a>
-</p>
-
-<p style="text-align: center">
-  <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a>
-</p>
-
 <h2 style="text-align: center"><strong>Liber Umbrae</strong></h2>
+
+<p style="text-align: center">
+  <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Read Liber Umbrae in English</a>
+</p>
+
+<p style="text-align: center">
+  <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Lee Liber Umbrae en Español</a>
+</p>
 
 <p>
   <a href="https://www.goodreads.com/book/show/246517883-liber-umbrae"
@@ -203,16 +211,6 @@
   </a>
 </p>
 
-<!--
-<button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')"
-        style="background:none;border:none;cursor:pointer;padding:0;display:inline-block;">
-  <img
-    style="vertical-align:middle;margin-bottom:0.5em"
-    src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png"
-    alt="Goodreads badge add plus">
-</button>
--->
-
 <p>
   This is where we examine the difficult questions using the framework built in <em>Liber Luminis</em> to make sense of it all.<br>
   This is also where the autobiographical subplot shows up in full force.
@@ -220,14 +218,6 @@
 
 <p>
   This offers you not just plenty of opportunities to laugh at me, but it also offers a sense of real-world grounding for these concepts.
-</p>
-
-<p style="text-align: center">
-  <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Read Liber Umbrae in English</a>
-</p>
-
-<p style="text-align: center">
-  <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Lee Liber Umbrae en Español</a>
 </p>
 
 <h2 style="text-align: center">Entire Series</h2>
