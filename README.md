@@ -145,7 +145,7 @@
   <li>Comedic relief + a piss-poor attitude so it doesn’t sound anything like Crowley!</li>
 </ul>
 
-<h2><strong>AI Notebook [FREE]</strong></h2>
+<h2 style="text-align: center"><strong>AI Notebook [FREE]</strong></h2>
 
 <p>
   The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
