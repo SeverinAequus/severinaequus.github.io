@@ -5,7 +5,9 @@
   margin: 0 0 1.5rem;
   border-bottom: 1px solid #b9ad9d;
 }
+  
 .publication-tabs[hidden], .publication-panel[hidden] { display: none; }
+  
 .publication-tabs button {
   flex: 1;
   min-width: 0;
@@ -19,18 +21,22 @@
   font-weight: 600;
   cursor: pointer;
 }
+  
 .publication-tabs button:hover { background: #e9e0d2; }
+  
 .publication-tabs button[aria-selected="true"] {
   background: #e9e0d2;
   border-color: #b9ad9d;
   border-bottom-color: #2b2a78;
   color: #2a1f14;
 }
+  
 .publication-tabs button:focus-visible,
 .publication-panel:focus-visible {
   outline: 2px solid #2b2a78;
   outline-offset: 3px;
 }
+  
 @media print {
   .publication-tabs, .publication-placeholder { display: none; }
   #publication-books[hidden] { display: block; }
@@ -243,9 +249,10 @@
 </div>
 
 <div id="publication-media" class="publication-panel publication-placeholder">
-  <h2 id="media-title" style="text-align: center">
-    Excerpts and Media Generated from Liber Luminis and Liber Umbrae
-  </h2>
+  <h3 id="media-title" style="text-align: center">
+    Excerpts and Media
+  </h3>
+  <p style="text-align: center">Generated from Liber Luminis and Liber Umbrae</p>
   <p id="media-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
     Video and audio links will open in a new tab and play using your browser's native media player.
