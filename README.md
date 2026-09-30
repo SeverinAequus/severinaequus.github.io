@@ -88,7 +88,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-<h1><strong>Liber Luminis &amp; Liber Umbrae</strong></h1>
+<h1><strong><a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Liber Luminis</a> &amp; <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Liber Umbrae</a></strong></h1>
 
 <p>
   <strong>No dance moves. No “above your grade” gatekeeping.</strong><br>
