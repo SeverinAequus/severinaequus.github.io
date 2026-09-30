@@ -88,93 +88,169 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-# **Liber Luminis & Liber Umbrae**
+<h1><strong>Liber Luminis &amp; Liber Umbrae</strong></h1>
 
-**No dance moves. No “above your grade” gatekeeping.**  
-Just a coherent symbolic framework that answers the hard questions without leaving dangling mysteries and mental gymnastics.
+<p>
+  <strong>No dance moves. No “above your grade” gatekeeping.</strong><br>
+  Just a coherent symbolic framework that answers the hard questions without leaving dangling mysteries and mental gymnastics.
+</p>
 
-## The Straight-Talk Summary 
+<h2>The Straight-Talk Summary</h2>
 
-These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of shit. 
+<p>
+  These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of shit.
+</p>
 
-These books address the hard questions that you've been asking about and keep getting deflected with bullshit like, *"It's above your degree/grade/whatever."* That's just code for *"I have no fuckin' idea."* 
+<p>
+  These books address the hard questions that you've been asking about and keep getting deflected with bullshit like,
+  <em>"It's above your degree/grade/whatever."</em>
+  That's just code for <em>"I have no fuckin' idea."</em>
+</p>
 
-Well, I do have an idea and I want to share it with you. 
+<p>
+  Well, I do have an idea and I want to share it with you.
+</p>
 
-Ultimately, you can decide whether you like my ideas or not. They're generally in line with the respected innovators in this subject area. But where I diverge, it's done for very sound reasons. In the end, what you get by going along with what I'm saying is better than any "secret" anyone can bestow upon you. 
+<p>
+  Ultimately, you can decide whether you like my ideas or not. They're generally in line with the respected innovators in this subject area.
+  But where I diverge, it's done for very sound reasons. In the end, what you get by going along with what I'm saying is better than any
+  "secret" anyone can bestow upon you.
+</p>
 
-I offer: ***Internal consistency.***
+<p>
+  I offer: <strong><em>Internal consistency.</em></strong>
+</p>
 
-If you decide to buy into what I'm saying and model things the way I lay them out, everything fits together. 
+<p>
+  If you decide to buy into what I'm saying and model things the way I lay them out, everything fits together.
+</p>
 
-No unsightly dangly bits. \
-No mental gymnastics to make things fit (Aethyrs, anyone?). 
+<p>
+  No unsightly dangly bits.<br>
+  No mental gymnastics to make things fit (Aethyrs, anyone?).
+</p>
 
-If you go with the model described in these books, not only will you end up with a coherent system that works (my own life is evidence of that), you'll have a symbolic framework so coherent that you can draw it on a piece of paper!\
-(**no, it's not the Tree of Life**)
+<p>
+  If you go with the model described in these books, not only will you end up with a coherent system that works
+  (my own life is evidence of that), you'll have a symbolic framework so coherent that you can draw it on a piece of paper!<br>
+  <strong>(no, it's not the Tree of Life)</strong>
+</p>
 
-## What You’re Getting
+<h2>What You’re Getting</h2>
 
-- A coherent framework you can actually diagram.
-- Examples of how to model concepts you already know within the system as you build it.
-- Difficult questions addressed head-on with no hand-waving and no bullshit.
-- An open-ended system that you can continue to expand upon with new ideas forever.
-- Comedic relief + a piss-poor attitude so it doesn’t sound anything like Crowley!
+<ul>
+  <li>A coherent framework you can actually diagram.</li>
+  <li>Examples of how to model concepts you already know within the system as you build it.</li>
+  <li>Difficult questions addressed head-on with no hand-waving and no bullshit.</li>
+  <li>An open-ended system that you can continue to expand upon with new ideas forever.</li>
+  <li>Comedic relief + a piss-poor attitude so it doesn’t sound anything like Crowley!</li>
+</ul>
 
-## **AI Notebook [FREE]**
+<h2><strong>AI Notebook [FREE]</strong></h2>
 
-The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
-It also includes tools that you can use to create documents and media from the source of both books and the supplements.
+<p>
+  The Google Notebook workspace includes an AI expert on my philosophy that you can ask anything you want.
+  It also includes tools that you can use to create documents and media from the source of both books and the supplements.
+</p>
 
-<a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea" target="_blank" rel="noopener noreferrer">Google Notebook</a>
+<p>
+  <a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea"
+     target="_blank"
+     rel="noopener noreferrer">Google Notebook</a>
+</p>
 
-## **Liber Luminis**
+<h2><strong>Liber Luminis</strong></h2>
 
-<a href="https://www.goodreads.com/book/show/246531717-liber-luminis" target="_blank" rel="noopener noreferrer">
-<img style="vertical-align: middle; margin-bottom: 0.5em" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Goodreads badge add plus"></a>
+<p>
+  <a href="https://www.goodreads.com/book/show/246531717-liber-luminis"
+     target="_blank"
+     rel="noopener noreferrer">
+    <img
+      style="vertical-align: middle; margin-bottom: 0.5em"
+      src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png"
+      alt="Goodreads badge add plus">
+  </a>
+</p>
 
-Covers many of the less-discussed questions initiates often have early in their journey.\
-Describes exactly what you need to do to become an Adept and exactly how to do it (assuming that you have a copy of *Abramelin* already...)\
-No time wasted rehashing what a hundred other authors have already said.
+<p>
+  Covers many of the less-discussed questions initiates often have early in their journey.<br>
+  Describes exactly what you need to do to become an Adept and exactly how to do it
+  (assuming that you have a copy of <em>Abramelin</em> already...)<br>
+  No time wasted rehashing what a hundred other authors have already said.
+</p>
 
-Instead: You get a specific perspective and analysis that places familiar concepts into the framework while the framework itself is being built.
+<p>
+  Instead: You get a specific perspective and analysis that places familiar concepts into the framework while the framework itself is being built.
+</p>
 
-[Read Liber Luminis in English](https://www.amazon.com/gp/product/B0GGJQPG1T)
+<p>
+  <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a>
+</p>
 
-[Lee Liber Luminis en Español](https://www.amazon.com/dp/products/B0GJR5YV9T)
+<p>
+  <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a>
+</p>
 
-## **Liber Umbrae**
+<h2><strong>Liber Umbrae</strong></h2>
 
-<a href="https://www.goodreads.com/book/show/246517883-liber-umbrae" target="_blank" rel="noopener noreferrer">
-<img style="vertical-align: middle; margin-bottom: 0.5em" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Goodreads badge add plus"></a>
+<p>
+  <a href="https://www.goodreads.com/book/show/246517883-liber-umbrae"
+     target="_blank"
+     rel="noopener noreferrer">
+    <img
+      style="vertical-align: middle; margin-bottom: 0.5em"
+      src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png"
+      alt="Goodreads badge add plus">
+  </a>
+</p>
 
-<!-- <button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')" 
+<!--
+<button onclick="window.open('https://www.goodreads.com/book/show/246517883-liber-umbrae','_blank','noopener,noreferrer')"
         style="background:none;border:none;cursor:pointer;padding:0;display:inline-block;">
-  <img style="vertical-align:middle;margin-bottom:0.5em" 
-       src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" 
-       alt="Goodreads badge add plus">
-</button> -->
+  <img
+    style="vertical-align:middle;margin-bottom:0.5em"
+    src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png"
+    alt="Goodreads badge add plus">
+</button>
+-->
 
-This is where we examine the difficult questions using the framework built in *Liber Luminis* to make sense of it all.\
-This is also where the autobiographical subplot shows up in full force.
+<p>
+  This is where we examine the difficult questions using the framework built in <em>Liber Luminis</em> to make sense of it all.<br>
+  This is also where the autobiographical subplot shows up in full force.
+</p>
 
-This offers you not just plenty of opportunities to laugh at me, but it also offers a sense of real-world grounding for these concepts.
+<p>
+  This offers you not just plenty of opportunities to laugh at me, but it also offers a sense of real-world grounding for these concepts.
+</p>
 
-[Read Liber Umbrae in English](https://www.amazon.com/gp/product/B0GFXZ8C6K)
+<p>
+  <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Read Liber Umbrae in English</a>
+</p>
 
-[Lee Liber Umbrae en Español](https://www.amazon.com/dp/product/B0GJQWX8TJ)
+<p>
+  <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Lee Liber Umbrae en Español</a>
+</p>
 
-## Entire Series
+<h2>Entire Series</h2>
 
-[Constructing Cosmological Models of Consciousness](https://www.amazon.com/dp/B0GGJ1W3NF)
+<p>
+  <a href="https://www.amazon.com/dp/B0GGJ1W3NF">Constructing Cosmological Models of Consciousness</a>
+</p>
 
-## FAQ
+<h2>FAQ</h2>
 
-"If you want to share these ideas so badly, why don't you share them for free?"
+<p>
+  "If you want to share these ideas so badly, why don't you share them for free?"
+</p>
 
-I did. Most of the content of both books is available on my Facebook wall if you want to scroll back far enough to find it all. 
+<p>
+  I did. Most of the content of both books is available on my Facebook wall if you want to scroll back far enough to find it all.
+</p>
 
-But here's the crazy thing about people: If you give them something for free, they don't value it. Paradoxically, charging for the content is the only way to get people to actually read it!
+<p>
+  But here's the crazy thing about people: If you give them something for free, they don't value it.
+  Paradoxically, charging for the content is the only way to get people to actually read it!
+</p>
 </div>
 
 <div id="publication-media" class="publication-panel publication-placeholder">
