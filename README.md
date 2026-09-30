@@ -422,14 +422,14 @@
             const links = document.createElement("div");
             links.className = "tab-media-links";
 
-            addMediaDocumentLink(links, "PDF", pdf);
+            addMediaDocumentLink(links, "[PDF]", pdf);
 
             if (mp4) {
-                addMediaLink(links, "Explainer Video", mp4, "video");
+                addMediaLink(links, "[Explainer Video]", mp4, "video");
             }
 
             if (m4a) {
-                addMediaLink(links, "Deep Dive Podcast", m4a, "audio");
+                addMediaLink(links, "[Deep Dive Podcast]", m4a, "audio");
             }
 
             entry.appendChild(links);
@@ -551,24 +551,14 @@
             const links = document.createElement("div");
             links.className = "tab-media-links";
 
-            addBioDocumentLink(links, "PDF", pdf);
+            addBioDocumentLink(links, "[PDF]", pdf);
 
             if (mp4) {
-                addBioMediaLink(
-                    links,
-                    "Explainer Video",
-                    mp4,
-                    "video"
-                );
+                addBioMediaLink(links, "[Explainer Video]", mp4, "video");
             }
 
             if (m4a) {
-                addBioMediaLink(
-                    links,
-                    "Deep Dive Podcast",
-                    m4a,
-                    "audio"
-                );
+                addBioMediaLink(links, "[Deep Dive Podcast]", m4a, "audio");
             }
 
             entry.appendChild(links);
@@ -723,27 +713,17 @@
 
             const documentLabel =
                 doc.name.toLowerCase().endsWith(".pdf")
-                    ? "PDF"
-                    : "TXT";
+                    ? "[PDF]"
+                    : "[TXT]";
 
             addExtraDocumentLink(links, documentLabel, doc);
 
             if (mp4) {
-                addExtraMediaLink(
-                    links,
-                    "Explainer Video",
-                    mp4,
-                    "video"
-                );
+                addExtraMediaLink(links, "[Explainer Video]", mp4, "video");
             }
 
             if (m4a) {
-                addExtraMediaLink(
-                    links,
-                    "Deep Dive Podcast",
-                    m4a,
-                    "audio"
-                );
+                addExtraMediaLink(links, "[Deep Dive Podcast]", m4a, "audio");
             }
 
             entry.appendChild(links);
