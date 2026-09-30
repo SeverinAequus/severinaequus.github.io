@@ -85,10 +85,9 @@
 
 <div id="publication-books" class="publication-panel" markdown="1">
 
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-<h1 style="text-align: center"><strong><a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Liber Luminis</a> &amp; <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Liber Umbrae</a></strong></h1>
+<h1 style="text-align: center"><strong>Liber Luminis &amp; Liber Umbrae</strong></h1>
 
 <p>
   <strong>No dance moves. No “above your grade” gatekeeping.</strong><br>
@@ -183,13 +182,9 @@
   Instead: You get a specific perspective and analysis that places familiar concepts into the framework while the framework itself is being built.
 </p>
 
-<p>
-  <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a>
-</p>
+<p style="text-align: center"><a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a></p>
 
-<p>
-  <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a>
-</p>
+<p style="text-align: center"><a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a></p>
 
 <h2><strong>Liber Umbrae</strong></h2>
 
@@ -223,11 +218,11 @@
   This offers you not just plenty of opportunities to laugh at me, but it also offers a sense of real-world grounding for these concepts.
 </p>
 
-<p>
+<p style="text-align: center">
   <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">Read Liber Umbrae in English</a>
 </p>
 
-<p>
+<p style="text-align: center">
   <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Lee Liber Umbrae en Español</a>
 </p>
 
