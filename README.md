@@ -107,7 +107,7 @@ I offer: ***Internal consistency.***
 
 If you decide to buy into what I'm saying and model things the way I lay them out, everything fits together. 
 
-No unsightly dangly bits.\
+No unsightly dangly bits. \
 No mental gymnastics to make things fit (Aethyrs, anyone?). 
 
 If you go with the model described in these books, not only will you end up with a coherent system that works (my own life is evidence of that), you'll have a symbolic framework so coherent that you can draw it on a piece of paper!\
