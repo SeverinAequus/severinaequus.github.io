@@ -94,7 +94,7 @@
   Just a coherent symbolic framework that answers the hard questions without leaving dangling mysteries and mental gymnastics.
 </p>
 
-<h2>The Straight-Talk Summary</h2>
+<h2 style="text-align: center">The Straight-Talk Summary</h2>
 
 <p>
   These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of shit.
@@ -135,7 +135,7 @@
   <strong>(no, it's not the Tree of Life)</strong>
 </p>
 
-<h2>What You’re Getting</h2>
+<h2 style="text-align: center">What You’re Getting</h2>
 
 <ul>
   <li>A coherent framework you can actually diagram.</li>
@@ -158,7 +158,7 @@
      rel="noopener noreferrer">Google Notebook</a>
 </p>
 
-<h2><strong>Liber Luminis</strong></h2>
+<h2 style="text-align: center"><strong>Liber Luminis</strong></h2>
 
 <p>
   <a href="https://www.goodreads.com/book/show/246531717-liber-luminis"
@@ -182,11 +182,15 @@
   Instead: You get a specific perspective and analysis that places familiar concepts into the framework while the framework itself is being built.
 </p>
 
-<p style="text-align: center"><a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a></p>
+<p style="text-align: center">
+  <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">Read Liber Luminis in English</a>
+</p>
 
-<p style="text-align: center"><a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a></p>
+<p style="text-align: center">
+  <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Lee Liber Luminis en Español</a>
+</p>
 
-<h2><strong>Liber Umbrae</strong></h2>
+<h2 style="text-align: center"><strong>Liber Umbrae</strong></h2>
 
 <p>
   <a href="https://www.goodreads.com/book/show/246517883-liber-umbrae"
@@ -226,13 +230,13 @@
   <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Lee Liber Umbrae en Español</a>
 </p>
 
-<h2>Entire Series</h2>
+<h2 style="text-align: center">Entire Series</h2>
 
-<p>
+<p style="text-align: center">
   <a href="https://www.amazon.com/dp/B0GGJ1W3NF">Constructing Cosmological Models of Consciousness</a>
 </p>
 
-<h2>FAQ</h2>
+<h2 style="text-align: center">FAQ</h2>
 
 <p>
   "If you want to share these ideas so badly, why don't you share them for free?"
@@ -290,7 +294,7 @@
 
 <footer class="publication-license" aria-labelledby="web-content-license">
   <hr />
-  <h2 id="web-content-license">Web Content License</h2>
+  <h2 id="web-content-license" style="text-align: center">Web Content License</h2>
   <p>© 2026 Severin Aequus. All rights reserved.</p>
   <p>This page is licensed under the Creative Commons<br />
   Attribution–NonCommercial–NoDerivatives 4.0 International License.</p>
