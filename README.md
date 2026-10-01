@@ -454,7 +454,7 @@
 
         // Convert underscores to spaces
         baseName = baseName.replace(/_/g, " ");
-        return baseName.replace(/./g, "'");
+        return baseName.replace(/\./g, "'");
     }
 
     function addMediaDocumentLink(parent, text, asset) {
