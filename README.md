@@ -453,7 +453,8 @@
         const baseName = filename.replace(/\.[^.]+$/, "");
 
         // Convert underscores to spaces
-        return baseName.replace(/_/g, " ");
+        baseName = baseName.replace(/_/g, " ");
+        return baseName.replace(/./g, "'");
     }
 
     function addMediaDocumentLink(parent, text, asset) {
