@@ -56,14 +56,21 @@
 
     const container = document.getElementById("player");
 
+
     if (src && (type === "video" || type === "audio")) {
         const player = document.createElement(type);
-
-        player.src = src;
+    
         player.controls = true;
-        player.autoplay = true;
         player.preload = "metadata";
-
+    
+        if (type === "video") {
+            player.playsInline = true;
+            player.setAttribute("playsinline", "");
+            player.setAttribute("webkit-playsinline", "");
+        }
+    
+        player.src = src;
+    
         container.appendChild(player);
     }
     else {
