@@ -255,7 +255,8 @@
   </h3>
   <p id="media-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
-    Video and audio links will open in a new tab and play using your browser's native media player.
+    Video and audio links will open in a new tab and play using your browser's native media player.<br>
+    If Safari isn't working, use Chrome.
   </p>
   <div id="media-list">
     <p>Loading media...</p>
@@ -268,7 +269,8 @@
   </h3>
   <p id="bio-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
-    Video and audio links will open in a new tab and play using your browser's native media player.
+    Video and audio links will open in a new tab and play using your browser's native media player.<br>
+    If Safari isn't working, use Chrome.
   </p>
   <div id="bio-list">
     <p>Loading autobiographical content...</p>
@@ -282,7 +284,8 @@
   <p id="extras-help-text">
     PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
     TXT links will open as plain text in a new tab.<br>
-    Video and audio links will open in a new tab and play using your browser's native media player.
+    Video and audio links will open in a new tab and play using your browser's native media player.<br>
+    If Safari isn't working, use Chrome.
   </p>
   <div id="extra-list">
     <p>Loading additional content...</p>
