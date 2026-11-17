@@ -130,11 +130,11 @@
 <h2 style="text-align: center">The Straight-Talk Summary</h2>
 
 <p>
-  These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of shit.
+  These books contain absolutely zero dance moves, no hokey-pokey ("put your right ankh in, take your left wand out") kind of nonsense.
 </p>
 
 <p>
-  These books address the hard questions that you've been asking about and keep getting deflected with bullshit like,
+  These books address the hard questions that you've been asking about and keep getting deflected with nonsense like,
   <em>"It's above your degree/grade/whatever."</em>
   That's just code for <em>"I have no fuckin' idea."</em>
 </p>
@@ -173,9 +173,9 @@
 <ul>
   <li>A coherent framework you can actually diagram.</li>
   <li>Examples of how to model concepts you already know within the system as you build it.</li>
-  <li>Difficult questions addressed head-on with no hand-waving and no bullshit.</li>
+  <li>Difficult questions addressed head-on with no hand-waving and no double-talk.</li>
   <li>An open-ended system that you can continue to expand upon with new ideas forever.</li>
-  <li>Comedic relief + a piss-poor attitude so it doesn’t sound anything like Crowley!</li>
+  <li>Comedic relief + a bad attitude so it doesn’t sound anything like Crowley!</li>
 </ul>
 
 <h2 style="text-align: center"><strong>AI Notebook [FREE]</strong></h2>
