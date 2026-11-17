@@ -52,6 +52,33 @@
     margin-bottom: 0.4em;
 }
 
+.tab-media-entry h3 a.entry-anchor {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tab-media-entry h3 a.entry-anchor:hover {
+    text-decoration: underline;
+}
+
+.tab-media-entry h3 .entry-copy {
+    margin-left: 0.4em;
+    padding: 0.1em 0.2em;
+    border: none;
+    background: none;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    font-size: inherit;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+.tab-media-entry h3 .entry-copy:hover,
+.tab-media-entry h3 .entry-copy:focus-visible {
+    opacity: 1;
+}
+
 .tab-media-links {
     display: flex;
     gap: 1.25em;
@@ -357,6 +384,65 @@
   revealLinkedPanel();
   window.addEventListener('hashchange', revealLinkedPanel);
 
+  // Stable fragment IDs for dynamically built entries, e.g. #extra-name-of-essay.
+  // Derived from the asset filename, so renaming a file changes its link.
+  function entryId(tag, baseName) {
+    const slug = baseName.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    let id = `${tag}-${slug}`;
+    for (let n = 2; document.getElementById(id); n++) id = `${tag}-${slug}-${n}`;
+    return id;
+  }
+
+  // Title text wrapped in a link to its own fragment, followed by a button
+  // that copies that link's full URL to the clipboard.
+  const COPY_ICON = '<svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  const CHECK_ICON = '<svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  function titleWithLinks(id, text) {
+    const frag = document.createDocumentFragment();
+
+    const a = document.createElement('a');
+    a.className = 'entry-anchor';
+    a.href = `#${id}`;
+    a.textContent = text;
+    frag.appendChild(a);
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'entry-copy';
+    button.title = 'Copy link to this essay';
+    button.setAttribute('aria-label', `Copy link to ${text}`);
+    button.innerHTML = COPY_ICON;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(a.href);
+        button.innerHTML = CHECK_ICON;
+        button.title = 'Link copied';
+        setTimeout(() => {
+          button.innerHTML = COPY_ICON;
+          button.title = 'Copy link to this essay';
+        }, 1500);
+      } catch (_) {
+        window.prompt('Copy this link:', a.href);
+      }
+    });
+    frag.appendChild(button);
+
+    return frag;
+  }
+
+  // Builders finish after the initial revealLinkedPanel() call; retry once a
+  // list is populated, but only if the hash points into that list.
+  function revealIfWithin(container) {
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); }
+    catch (_) { return; }
+    const target = id && document.getElementById(id);
+    if (target && container.contains(target)) revealLinkedPanel();
+  }
+
   //
   // Dynamic builder for Media Tab
   //
@@ -422,9 +508,10 @@
 
             const entry = document.createElement("div");
             entry.className = "tab-media-entry";
+            entry.id = entryId(tag, baseName);
 
             const title = document.createElement("h3");
-            title.textContent = displayTitle(pdf.name);
+            title.appendChild(titleWithLinks(entry.id, displayTitle(pdf.name)));
             entry.appendChild(title);
 
             const links = document.createElement("div");
@@ -443,6 +530,8 @@
             entry.appendChild(links);
             container.appendChild(entry);
         }
+
+        revealIfWithin(container);
 
     } catch (error) {
         console.error(error);
@@ -551,9 +640,10 @@
 
             const entry = document.createElement("div");
             entry.className = "tab-media-entry";
+            entry.id = entryId(tag, baseName);
 
             const title = document.createElement("h3");
-            title.textContent = displayBioTitle(pdf.name);
+            title.appendChild(titleWithLinks(entry.id, displayBioTitle(pdf.name)));
             entry.appendChild(title);
 
             const links = document.createElement("div");
@@ -572,6 +662,8 @@
             entry.appendChild(links);
             container.appendChild(entry);
         }
+
+        revealIfWithin(container);
 
     } catch (error) {
         console.error(error);
@@ -711,9 +803,10 @@
 
             const entry = document.createElement("div");
             entry.className = "tab-media-entry";
+            entry.id = entryId(tag, baseName);
 
             const title = document.createElement("h3");
-            title.textContent = displayExtraTitle(doc.name);
+            title.appendChild(titleWithLinks(entry.id, displayExtraTitle(doc.name)));
             entry.appendChild(title);
 
             const links = document.createElement("div");
@@ -737,6 +830,8 @@
             entry.appendChild(links);
             container.appendChild(entry);
         }
+
+        revealIfWithin(container);
 
     } catch (error) {
         console.error(error);
