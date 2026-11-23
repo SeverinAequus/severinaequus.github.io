@@ -1,1 +1,3 @@
 <link rel="stylesheet" href="/assets/css/style.css">
+{% if page.noindex %}<meta name="robots" content="noindex, nofollow">
+{% include danger-gate.html %}{% endif %}

@@ -4,3 +4,8 @@ description: Descriptions of, and links to, all available media created by Sever
 exclude:
   - README.md
   - deploy.ps1
+defaults:
+  - scope:
+      path: "danger-docs"
+    values:
+      noindex: true

@@ -1,0 +1,86 @@
+<!--
+  Password speed bump for the Danger page and its Markdown essays.
+  This is not security: the site and repo are public. It only stops casual visitors.
+  To change the password, replace GATE_HASH with the SHA-256 of the new one:
+    printf '%s' 'new-password' | sha256sum
+-->
+<style id="danger-gate-hide">body { visibility: hidden; }</style>
+<script>
+(function () {
+  'use strict';
+  const GATE_HASH = '6d6f8a04a714647b738f5879bfdf37aefc064451c56d78c6582d90d98af217a5';
+  const KEY = 'danger-unlocked';
+
+  function reveal() {
+    const hide = document.getElementById('danger-gate-hide');
+    if (hide) hide.remove();
+  }
+
+  let remembered = false;
+  try { remembered = localStorage.getItem(KEY) === GATE_HASH; } catch (_) {}
+  if (remembered) { reveal(); return; }
+
+  async function sha256(text) {
+    const bytes = new TextEncoder().encode(text);
+    const digest = await crypto.subtle.digest('SHA-256', bytes);
+    return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const gate = document.createElement('div');
+    gate.id = 'danger-gate';
+    gate.innerHTML = `
+      <style>
+        #danger-gate {
+          visibility: visible; position: fixed; inset: 0; z-index: 1000;
+          display: flex; align-items: center; justify-content: center; padding: 16px;
+          background: #f1eadf;
+        }
+        #danger-gate form {
+          width: 100%; max-width: 420px; padding: 32px 28px;
+          background: rgba(253, 251, 246, 0.95); border: 1px solid rgba(0,0,0,0.08);
+          border-radius: 18px; box-shadow: 0 18px 55px rgba(0,0,0,0.18); text-align: center;
+        }
+        #danger-gate h1 { margin: 0 0 0.4em; font-size: 36px; }
+        #danger-gate p { margin: 0 0 1em; }
+        #danger-gate input {
+          width: 100%; box-sizing: border-box; padding: 0.55em 0.7em; font: inherit;
+          border: 1px solid #b9ad9d; border-radius: 7px; background: #fff;
+        }
+        #danger-gate button {
+          margin-top: 0.9em; padding: 0.5em 1.4em; font: inherit; font-weight: 600;
+          color: #fff; background: #2b2a78; border: none; border-radius: 7px; cursor: pointer;
+        }
+        #danger-gate .gate-error { min-height: 1.5em; margin: 0.6em 0 0; color: #7a1f1f; }
+      </style>
+      <form>
+        <h1>Danger</h1>
+        <p>This section is password protected.</p>
+        <input type="password" autocomplete="current-password" aria-label="Password" autofocus>
+        <button type="submit">Enter</button>
+        <p class="gate-error" role="alert"></p>
+      </form>`;
+    document.body.appendChild(gate);
+
+    const form = gate.querySelector('form');
+    const input = gate.querySelector('input');
+    const error = gate.querySelector('.gate-error');
+    input.focus();
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (await sha256(input.value.trim()) === GATE_HASH) {
+        try { localStorage.setItem(KEY, GATE_HASH); } catch (_) {}
+        gate.remove();
+        reveal();
+        const id = decodeURIComponent(window.location.hash.slice(1));
+        const target = id && document.getElementById(id);
+        if (target) target.scrollIntoView();
+      } else {
+        error.textContent = 'Incorrect password.';
+        input.select();
+      }
+    });
+  });
+})();
+</script>
