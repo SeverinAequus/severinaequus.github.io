@@ -7,7 +7,6 @@ Improvements we've tabled. Not published to the site.
 - **Subpages from Quora answers.** Build subpages from the downloaded Quora answer history, grouped by topic (philosophy, relationships, science, …).
 - **Bring the Medium essays home.** Check which Medium essays aren't on this site yet and add them.
 - **Bio in `deploy.ps1`.** The script only knows the `media` and `extra` writing folders.
-- **The Wounded Angel v2 text.** `_bio/The_Wounded_Angel_v2.pdf` is byte-identical to `_bio/The_Wounded_Angel.pdf`, so the v2 entry shows the v1 text. The only distinct v2 text is `The_Wounded_Angel_v2.txt` in the `bio` release, a compilation of "Boys are from Room 103…", "How To Sleep With a Woman…", and an expanded "The Wounded Angel". Make a real v2 document.
 
 ## Finding things
 
