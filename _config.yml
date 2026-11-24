@@ -4,6 +4,7 @@ description: Descriptions of, and links to, all available media created by Sever
 repository: SeverinAequus/severinaequus.github.io
 exclude:
   - README.md
+  - TODO.md
   - deploy.ps1
 
 # Every subpage is a collection: a directory named _<name> holding an

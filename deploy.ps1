@@ -62,28 +62,42 @@ Write-Host "Release tag: $($SelectedLocation.Tag)"
 Write-Host ""
 
 #
-# Make sure the local staging directory exists.
+# Documents (.md, .pdf, .txt) go into the subpage's directory in the repo,
+# which you then commit. Media (.mp4, .m4a) is too large for the repo and
+# goes to the release instead, by way of a temporary staging directory.
+# Anything else is skipped.
 #
-New-Item `
-    -ItemType Directory `
-    -Force `
-    -Path $SelectedLocation.Dest |
-    Out-Null
+$DocumentExtensions = @('.md', '.pdf', '.txt')
+$MediaExtensions    = @('.mp4', '.m4a')
 
+$StagingDir = Join-Path ([System.IO.Path]::GetTempPath()) "deploy-$($SelectedLocation.Tag)"
+
+New-Item -ItemType Directory -Force -Path $SelectedLocation.Dest | Out-Null
+New-Item -ItemType Directory -Force -Path $StagingDir | Out-Null
+
+$CopiedFiles = @()
 $UploadFiles = @()
 
 foreach ($File in $MatchedFiles) {
 
     #
-    # Canonicalize the filename for GitHub:
-    # spaces in the basename become underscores.
+    # Canonicalize the filename: spaces in the basename become underscores.
     #
-    $DestinationBaseName = $File.BaseName -replace ' ', '_'
-    $DestinationName =
-        $DestinationBaseName + $File.Extension
+    $DestinationName = ($File.BaseName -replace ' ', '_') + $File.Extension
+    $Extension = $File.Extension.ToLowerInvariant()
 
-    $DestinationPath =
-        Join-Path $SelectedLocation.Dest $DestinationName
+    if ($DocumentExtensions -contains $Extension) {
+        $DestinationPath = Join-Path $SelectedLocation.Dest $DestinationName
+        $CopiedFiles += $DestinationPath
+    }
+    elseif ($MediaExtensions -contains $Extension) {
+        $DestinationPath = Join-Path $StagingDir $DestinationName
+        $UploadFiles += $DestinationPath
+    }
+    else {
+        Write-Host "Skipping $($File.Name) (not a document or media file)"
+        continue
+    }
 
     Write-Host "Copying:"
     Write-Host "  $($File.FullName)"
@@ -93,8 +107,6 @@ foreach ($File in $MatchedFiles) {
         -LiteralPath $File.FullName `
         -Destination $DestinationPath `
         -Force
-
-    $UploadFiles += $DestinationPath
 }
 
 Write-Host ""
@@ -116,10 +128,16 @@ foreach ($File in $UploadFiles) {
     }
 }
 
+Remove-Item -LiteralPath $StagingDir -Recurse -Force
+
 Write-Host ""
 Write-Host "Deployment complete."
 Write-Host ""
-
+Write-Host "Uploaded to release '$($SelectedLocation.Tag)':"
 foreach ($File in $UploadFiles) {
     Write-Host "  $(Split-Path $File -Leaf)"
+}
+Write-Host "Copied into the repo (commit and push these):"
+foreach ($File in $CopiedFiles) {
+    Write-Host "  $File"
 }

@@ -2,53 +2,75 @@
 layout: default
 ---
 {%- comment -%}
-  Shared layout for list subpages. It lists every .md, .pdf and .txt file in
+  Shared layout for list subpages. It lists the .md, .pdf and .txt files in
   this page's collection directory (_<name>/), one entry per base name, sorted
-  by title when the site is built. Files that share a base name become extra
-  links on the same entry: [Web Page] for .md, then [PDF], then [TXT].
+  by title when the site is built. When several formats share a base name,
+  only the best one is linked: .md ([Web Page]), then .pdf, then .txt. Essays
+  start as .txt and get converted later, so an older format is stale.
   In the browser, entry-list.js adds the filter box, the copy-link buttons and
   any .mp4/.m4a with the same base name from the GitHub release tagged <name>.
 
-  Records are "<sort key> <base>|<ext>|<url>". The sort key has its spaces
-  replaced by "!" so the space after it sorts before any title character,
-  which keeps "Gnosticism" ahead of "Gnosticism for Dummies".
+  Records are "<sort key> <base>|<rank><ext>|<url>". The sort key has its
+  spaces replaced by "!" so the space after it sorts before any title
+  character, which keeps "Gnosticism" ahead of "Gnosticism for Dummies".
+  <rank> (1 = .md, 2 = .pdf, 3 = .txt) puts each essay's best format first.
 {%- endcomment -%}
 {%- assign coll = site.collections | where: "label", page.collection | first -%}
 {%- assign records = "" | split: "" -%}
-{%- assign has_md = false -%}{%- assign has_txt = false -%}
 
 {%- for f in coll.files -%}
   {%- assign ext = f.extname | downcase -%}
-  {%- if ext == ".pdf" or ext == ".txt" or ext == ".md" -%}
+  {%- if ext == ".pdf" or ext == ".txt" -%}
     {%- assign base_len = f.name.size | minus: f.extname.size -%}
     {%- assign base = f.name | slice: 0, base_len -%}
     {%- assign key = base | replace: "_", " " | downcase | replace: " ", "!" -%}
-    {%- if ext == ".txt" -%}{%- assign has_txt = true -%}{%- endif -%}
-    {%- capture rec -%}{{ key }} {{ base }}|{{ ext }}|/{{ coll.label }}/{{ f.name }}{%- endcapture -%}
+    {%- if ext == ".pdf" -%}{%- assign rank = "2" -%}{%- else -%}{%- assign rank = "3" -%}{%- endif -%}
+    {%- capture rec -%}{{ key }} {{ base }}|{{ rank }}{{ ext }}|/{{ coll.label }}/{{ f.name }}{%- endcapture -%}
     {%- assign records = records | push: rec -%}
   {%- endif -%}
 {%- endfor -%}
 
+{%- comment -%} Jekyll renders a .md file as a page, so it is a document, not a file. {%- endcomment -%}
 {%- for d in coll.docs -%}
-  {%- assign ext = d.extname | downcase -%}
+  {%- assign name = d.path | split: "/" | last -%}
+  {%- assign ext = name | slice: -3, 3 | downcase -%}
   {%- if ext == ".md" and d.url != page.url -%}
-    {%- assign name = d.path | split: "/" | last -%}
-    {%- assign base_len = name.size | minus: d.extname.size -%}
+    {%- assign base_len = name.size | minus: 3 -%}
     {%- assign base = name | slice: 0, base_len -%}
     {%- assign key = base | replace: "_", " " | downcase | replace: " ", "!" -%}
-    {%- assign has_md = true -%}
-    {%- capture rec -%}{{ key }} {{ base }}|.md|{{ d.url }}{%- endcapture -%}
+    {%- capture rec -%}{{ key }} {{ base }}|1.md|{{ d.url }}{%- endcapture -%}
     {%- assign records = records | push: rec -%}
   {%- endif -%}
 {%- endfor -%}
 
 {%- assign records = records | sort -%}
-{%- assign keys = "" | split: "" -%}
+{%- assign has_md = false -%}{%- assign has_pdf = false -%}{%- assign has_txt = false -%}
+{%- assign prev = "" -%}
+{%- capture entries -%}
 {%- for r in records -%}
   {%- assign k = r | split: " " | first -%}
-  {%- assign keys = keys | push: k -%}
+  {%- if k != prev -%}
+    {%- assign prev = k -%}
+    {%- assign fields = r | remove_first: k | remove_first: " " | split: "|" -%}
+    {%- assign base = fields[0] -%}{%- assign ext = fields[1] | slice: 1, 4 -%}{%- assign url = fields[2] | relative_url -%}
+    {%- assign title = base | replace: "_", " " -%}
+    {%- assign id = base | slugify %}
+  <div class="entry" id="{{ id }}" data-base="{{ base | escape }}">
+    <h3><a class="entry-anchor" href="#{{ id }}">{{ title | escape }}</a><button type="button" class="entry-copy" title="Copy link to this essay" aria-label="Copy link to {{ title | escape }}" hidden><svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></h3>
+    <div class="entry-links">
+    {%- case ext -%}
+      {%- when ".md" -%}{%- assign has_md = true %}
+      <a href="{{ url }}">[Web Page]</a>
+      {%- when ".pdf" -%}{%- assign has_pdf = true %}
+      <a href="{{ url }}" target="_blank" rel="noopener">[PDF]</a>
+      {%- when ".txt" -%}{%- assign has_txt = true %}
+      <a href="{{ url }}" target="_blank" rel="noopener">[TXT]</a>
+    {%- endcase %}
+    </div>
+  </div>
+  {%- endif -%}
 {%- endfor -%}
-{%- assign keys = keys | uniq %}
+{%- endcapture %}
 
 {{ content }}
 
@@ -56,7 +78,9 @@ layout: default
   {%- if has_md %}
   Web Page links open the essay as a page on this site.<br>
   {%- endif %}
+  {%- if has_pdf %}
   PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
+  {%- endif %}
   {%- if has_txt %}
   TXT links will open as plain text in a new tab.<br>
   {%- endif %}
@@ -71,33 +95,7 @@ layout: default
 </div>
 
 <div class="entry-list" data-repo="{{ site.repository }}" data-release="{{ page.collection }}">
-{%- for k in keys %}
-  {%- assign first = true -%}
-  {%- for r in records -%}
-    {%- assign rk = r | split: " " | first -%}
-    {%- if rk == k -%}
-      {%- assign fields = r | remove_first: rk | remove_first: " " | split: "|" -%}
-      {%- assign base = fields[0] -%}{%- assign ext = fields[1] -%}{%- assign url = fields[2] -%}
-      {%- if first -%}
-        {%- assign first = false -%}
-        {%- assign title = base | replace: "_", " " %}
-  <div class="entry" id="{{ base | slugify }}" data-base="{{ base | escape }}">
-    <h3><a class="entry-anchor" href="#{{ base | slugify }}">{{ title | escape }}</a><button type="button" class="entry-copy" title="Copy link to this essay" aria-label="Copy link to {{ title | escape }}" hidden><svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></h3>
-    <div class="entry-links">
-      {%- endif -%}
-      {%- case ext -%}
-        {%- when ".md" %}
-      <a href="{{ url | relative_url }}">[Web Page]</a>
-        {%- when ".pdf" %}
-      <a href="{{ url | relative_url }}" target="_blank" rel="noopener">[PDF]</a>
-        {%- when ".txt" %}
-      <a href="{{ url | relative_url }}" target="_blank" rel="noopener">[TXT]</a>
-      {%- endcase -%}
-    {%- endif -%}
-  {%- endfor %}
-    </div>
-  </div>
-{%- endfor %}
+{{ entries }}
   <p class="entry-empty" hidden>No titles match your filter.</p>
 </div>
 
