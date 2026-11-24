@@ -1,32 +1,57 @@
 # severinaequus.github.io
 
-Source for [scientific-illuminism.org](https://scientific-illuminism.org/), the publications site of Severin Aequus. It's a GitHub Pages site built with Jekyll and the `jekyll-theme-minimal` theme.
+Source for [scientific-illuminism.org](https://scientific-illuminism.org/), the publications site of Severin Aequus. It's a GitHub Pages site built with Jekyll. GitHub runs the build every time `main` is pushed.
 
 ## Layout
 
 | Path | What it is |
 | --- | --- |
-| `index.md` | The site's home page: the tab strip (Books, Media, Bio, Additional Content), its styles, and the JavaScript that builds the essay lists. |
+| `_home/`, `_books/`, `_media/`, `_bio/`, `_extra/` | The subpages. Each one is a Jekyll collection: a directory named `_<name>` with an `index.html`, published at `/<name>/` (the home page at `/`). |
+| `_layouts/default.html` | The frame around every page: the navigation (a fixed pane on wide screens, a Menu button on narrow ones) and the license footer. |
+| `_layouts/list.html` | The shared layout for list subpages (Media, Bio, Additional Content). |
+| `assets/js/entry-list.js` | Browser-side behavior for list subpages: the filter box, copy-link buttons, and video/podcast links. |
+| `assets/css/style.css` | The look of the page: fonts, colors, and the "book page" panel. |
+| `assets/css/site.css` | The navigation, list entries, and the other shared page parts. |
 | `player.html` | Stand-alone page that plays an essay's video or audio (`?type=video\|audio&src=…&title=…`). |
-| `media-docs/`, `bio-docs/`, `extra-docs/` | The PDF/TXT files that essay links open. |
-| `danger/index.md`, `danger-docs/` | The unlisted Danger page and its essays (see below). |
-| `_includes/head-custom.html` | Extra `<head>` content added to the theme. |
-| `assets/css/` | Theme stylesheet overrides. |
-| `deploy.ps1` | Uploads an essay's files to its GitHub release (see below). Not published to the site. |
+| `deploy.ps1` | Copies an essay's files into its subpage directory and uploads them to that subpage's GitHub release (see below). Not published to the site. |
 
-## How the essay lists work
+## Subpages
 
-The Media, Bio, and Additional Content tabs aren't written by hand. When the page loads, each tab asks the GitHub API for the assets on a release in this repo:
+Each subpage's `index.html` starts with front matter like this:
 
-| Tab | Release tag | Document folder |
-| --- | --- | --- |
-| Media | `media` | `media-docs/` |
-| Bio | `bio` | `bio-docs/` |
-| Additional Content | `extra` | `extra-docs/` |
+```yaml
+---
+title: Excerpts and Media   # page title
+nav_title: Media            # menu label (defaults to title)
+nav_order: 3                # position in the menu; leave out to keep the page out of the menu
+permalink: /media/          # URL
+layout: list                # only for list subpages
+summary: Excerpts from …    # one line shown under "On This Site" on the home page
+---
+```
 
-Each `.pdf` (or, on Additional Content, `.txt`) asset becomes one entry. If the PDF and TXT share a name, the PDF wins. An `.mp4` or `.m4a` with the same base name adds an "Explainer Video" or "Deep Dive Podcast" link. Underscores in filenames are shown as spaces in titles.
+To add a subpage, create its `_<name>/index.html` and add `<name>` under `collections:` in `_config.yml`. Jekyll has no way to discover collections on its own.
 
-To publish an essay, copy its document into the matching `*-docs/` folder and upload its files to the matching release. `deploy.ps1` handles the release upload for `media` and `extra`:
+## List subpages
+
+A subpage with `layout: list` lists every `.md`, `.pdf`, and `.txt` file in its directory. The list is built and sorted by title when the site is built, so it is plain HTML in the published page.
+
+- Files that share a base name make one entry, with a link for each format: `[Web Page]` (a `.md` file, which Jekyll renders as a page), `[PDF]`, `[TXT]`.
+- Underscores in a file name show as spaces in the title.
+- In the browser, the page asks the GitHub API for the release whose tag is the directory name without the `_` (`_media` → `media`). Any `.mp4` or `.m4a` in it with the same base name as an entry (ignoring case) adds an "Explainer Video" or "Deep Dive Podcast" link. A subpage with no matching release simply has no video or podcast links.
+- The filter box at the top matches titles. Every word typed must appear in the title.
+
+### File naming
+
+Use underscores, not spaces, in file names. An essay's document in the repo and its `.mp4`/`.m4a` in the release must have the same base name. A media file whose name doesn't match any document never appears.
+
+### Publishing an essay
+
+1. Put its document in the subpage's directory, for example `_extra/Name_Of_Essay.pdf`.
+2. Upload its `.mp4` and/or `.m4a` to the release with the same tag (`extra`).
+3. Commit and push.
+
+`deploy.ps1` does steps 1 and 2 for `media` and `extra`: it copies the essay's files from the writing folders, changing spaces to underscores, and uploads them to the release. You still commit and push.
 
 ```powershell
 ./deploy.ps1 "Name Of Essay"
@@ -34,28 +59,12 @@ To publish an essay, copy its document into the matching `*-docs/` folder and up
 
 ## Linking to a single essay
 
-Every entry gets a URL fragment built from its tab and filename:
+Every entry gets a URL fragment built from its file name:
 
 ```
-https://scientific-illuminism.org/#extra-name-of-essay
+https://scientific-illuminism.org/extra/#name-of-essay
 ```
 
-Opening that link switches to the right tab and scrolls to the essay. The copy icon next to each title copies that link.
+Opening that link scrolls to the essay, clearing the filter if it was hiding it. The copy icon next to each title copies that link.
 
-Because the link comes from the filename, **renaming a file breaks any links already shared to it.**
-
-## The Danger page
-
-[scientific-illuminism.org/danger/](https://scientific-illuminism.org/danger/) lists essays with very heavy, explicit content. Nothing on the main site links to it, and it carries a `noindex` tag so search engines leave it out of their results. It is unlisted, not private: anyone with the URL can open it, and the files are in this public repo.
-
-The Danger page and its Markdown essay pages also ask for a password (`_includes/danger-gate.html`). It's a speed bump, not security: the check runs in the browser, the content is public in this repo, and PDF/TXT files can't be gated at all. A visitor's browser remembers the password once it's entered. To change it, put the SHA-256 of the new password in `GATE_HASH`:
-
-```
-printf '%s' 'new-password' | sha256sum
-```
-
-Unlike the other tabs, it doesn't use a GitHub release. Jekyll builds the list from the files in `danger-docs/` when the site is published, so to add an essay, commit its `.md`, `.pdf` or `.txt` there and push. Underscores show as spaces. If several formats share a name, only one is listed: Markdown first, then PDF, then TXT.
-
-Jekyll renders a `.md` essay as a page in the site's theme (`Name.md` is published as `Name.html`), and the list links to that page as `[Web Page]`. Every page under `danger-docs/` gets the same `noindex` tag as the Danger page (set in `_config.yml`). Because Jekyll runs Liquid on Markdown files, text like `{{` or `{%` in an essay will be read as template code. Wrap any such passage in `{% raw %}` … `{% endraw %}`. There are no video or podcast links on this page.
-
-Each entry links to itself as `https://scientific-illuminism.org/danger/#danger-name-of-essay`.
+Because the link comes from the file name, **renaming a file breaks any links already shared to it.**

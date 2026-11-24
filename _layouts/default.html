@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% seo %}
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+{%- comment -%}
+  The navigation lists every collection document that sets nav_order in its
+  front matter, sorted by it. A subpage stays out of the menu by omitting it.
+{%- endcomment -%}
+{%- assign nav_pages = "" | split: "" -%}
+{%- for c in site.collections -%}
+  {%- for d in c.docs -%}
+    {%- if d.nav_order -%}{%- assign nav_pages = nav_pages | push: d -%}{%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign nav_pages = nav_pages | sort: "nav_order" %}
+<header class="site-header">
+  <div class="site-header-bar">
+    <a class="site-title" href="{{ '/' | relative_url }}">
+      <span class="site-title-name">Severin Aequus</span>
+      <span class="site-title-sub">Publications</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+      <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span>Menu</span>
+    </button>
+  </div>
+  <nav id="site-nav" class="site-nav" aria-label="Site">
+    <ul>
+      {%- for d in nav_pages %}
+      <li><a href="{{ d.url | relative_url }}"{% if d.url == page.url %} aria-current="page"{% endif %}>{{ d.nav_title | default: d.title }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+</header>
+
+<div class="site-body">
+  <main>
+{{ content }}
+
+    <footer class="publication-license" aria-labelledby="web-content-license">
+      <hr>
+      <h2 id="web-content-license">Web Content License</h2>
+      <p>© 2026 Severin Aequus. All rights reserved.</p>
+      <p>This page is licensed under the Creative Commons<br>
+      Attribution–NonCommercial–NoDerivatives 4.0 International License.</p>
+      <p>You are free to share this page with attribution.<br>
+      You may not modify, remix, or use this material commercially.</p>
+      <p>License details: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">creativecommons.org/licenses/by-nc-nd/4.0</a></p>
+      <p>Note: The books Liber Luminis and Liber Umbrae are covered under full copyright terms.</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+// Narrow screens: collapse the menu behind the Menu button. Without
+// JavaScript the button stays hidden and the menu is always shown.
+(function () {
+  'use strict';
+  const header = document.querySelector('.site-header');
+  const button = header.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+
+  function setOpen(open) {
+    button.setAttribute('aria-expanded', String(open));
+    header.classList.toggle('nav-open', open);
+  }
+
+  header.classList.add('nav-collapsible');
+  button.hidden = false;
+  button.addEventListener('click', () =>
+    setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', event => {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('nav-open')) {
+      setOpen(false);
+      button.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

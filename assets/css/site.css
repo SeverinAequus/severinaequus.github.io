@@ -1,0 +1,279 @@
+/*
+ * Site frame (navigation) and the shared page parts. style.css holds the
+ * look of the page itself: fonts, colors, and the "book page" panel.
+ */
+
+:root {
+  --nav-width: 250px;
+  --ink: #2a1f14;
+  --link: #2b2a78;
+  --paper-dark: #e9e0d2;
+  --rule: #b9ad9d;
+}
+
+body { margin: 0; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 34px; }
+}
+
+/* --- Navigation: shared --- */
+
+.site-header { font-family: "EB Garamond", Georgia, serif; }
+
+.site-title {
+  display: block;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.site-title:hover { text-decoration: none; }
+
+.site-title-name {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.site-title-sub {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  display: block;
+  padding: 0.35em 0.8em;
+  border-left: 3px solid transparent;
+  border-radius: 0 6px 6px 0;
+  color: var(--ink);
+}
+
+.site-nav a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  border-left-color: var(--link);
+  color: var(--link);
+  font-weight: 600;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.35em 0.8em;
+  font: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  background: rgba(253, 251, 246, 0.8);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.nav-toggle[hidden] { display: none; }
+
+.site-nav a:focus-visible,
+.site-title:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+/* --- Navigation: wide screens get a fixed pane on the left --- */
+
+@media (min-width: 1000px) {
+  .site-header {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--nav-width);
+    box-sizing: border-box;
+    padding: 44px 20px 24px 24px;
+    overflow-y: auto;
+    background: rgba(233, 224, 210, 0.6);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .site-title { margin-bottom: 1.6em; }
+  .nav-toggle { display: none !important; }
+  .site-body { margin-left: var(--nav-width); }
+}
+
+/* --- Navigation: narrow screens get a top bar with a Menu button --- */
+
+@media (max-width: 999.98px) {
+  .site-header {
+    padding: 12px 16px 0;
+    background: rgba(233, 224, 210, 0.6);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .site-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+
+  .site-title-name { font-size: 26px; }
+  .site-title-sub { font-size: 13px; }
+
+  /* Without JavaScript: the menu is always shown, as a wrapped row. */
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.5em;
+    padding-bottom: 10px;
+  }
+
+  /* With JavaScript: the menu drops down under the bar when opened. */
+  .nav-collapsible .site-nav { display: none; }
+  .nav-collapsible.nav-open .site-nav { display: block; }
+  .nav-collapsible .site-nav ul {
+    display: block;
+    padding: 4px 0 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .nav-collapsible .site-nav a { padding: 0.55em 0.8em; }
+}
+
+/* --- Page parts --- */
+
+.page-title { text-align: center; }
+.page-title small {
+  display: block;
+  margin-top: 0.3em;
+  font-size: 0.55em;
+}
+
+.lede {
+  text-align: center;
+  font-style: italic;
+}
+
+.publication-license { text-align: center; }
+.publication-license h2 { font-size: 22px; }
+.publication-license p { font-size: 16px; }
+
+/* --- Landing page --- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 0.4rem 1.1rem 0.6rem;
+  background: rgba(253, 251, 246, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+.card h3 { margin-top: 0.6em; }
+
+.card-links,
+.more-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 1.25em;
+}
+
+.site-map { padding-left: 1.2em; }
+
+/* --- List pages (_layouts/list.html) --- */
+
+.entry-filter {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 1em -8px 1.5em;
+  padding: 10px 8px 6px;
+  background: rgba(250, 247, 240, 0.96);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.entry-filter[hidden] { display: none; }
+
+.entry-filter label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.entry-filter input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.45em 0.7em;
+  font: inherit;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  background: #fff;
+}
+.entry-filter input:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 1px;
+}
+
+.entry-filter-status {
+  min-height: 1.4em;
+  margin: 0.2em 0 0;
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+.entry-media-error {
+  font-size: 16px;
+  color: #7a1f1f;
+}
+
+.entry {
+  margin-bottom: 1.5em;
+  scroll-margin-top: 8.5rem;
+}
+.entry[hidden] { display: none; }
+
+.entry:target {
+  margin-left: -12px;
+  padding-left: 9px;
+  border-left: 3px solid var(--link);
+}
+
+.entry h3 { margin-bottom: 0.4em; }
+
+.entry h3 a.entry-anchor { color: inherit; }
+.entry h3 a.entry-anchor:hover { text-decoration: underline; }
+
+.entry h3 .entry-copy {
+  margin-left: 0.4em;
+  padding: 0.1em 0.2em;
+  border: none;
+  background: none;
+  color: inherit;
+  opacity: 0.5;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: 1;
+  vertical-align: baseline;
+}
+.entry h3 .entry-copy[hidden] { display: none; }
+.entry h3 .entry-copy:hover,
+.entry h3 .entry-copy:focus-visible { opacity: 1; }
+
+.entry-links {
+  display: flex;
+  gap: 1.25em;
+  flex-wrap: wrap;
+}

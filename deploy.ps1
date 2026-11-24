@@ -10,12 +10,12 @@ $RepoRoot = $PSScriptRoot
 $Locations = @(
     @{
         Source = "C:\Users\adam\OneDrive\Documents\My Writing\_Essays\Occult"
-        Dest   = Join-Path $RepoRoot "media"
+        Dest   = Join-Path $RepoRoot "_media"
         Tag    = "media"
     },
     @{
         Source = "C:\Users\adam\OneDrive\Documents\My Writing\_Essays\Psychology & Sexuality"
-        Dest   = Join-Path $RepoRoot "extra"
+        Dest   = Join-Path $RepoRoot "_extra"
         Tag    = "extra"
     }
 )

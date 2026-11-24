@@ -1,11 +1,22 @@
 theme: jekyll-theme-minimal
 title: The Publications of Severin Aequus
 description: Descriptions of, and links to, all available media created by Severin Aequus.
+repository: SeverinAequus/severinaequus.github.io
 exclude:
   - README.md
   - deploy.ps1
+
+# Every subpage is a collection: a directory named _<name> holding an
+# index.html (the page itself) plus, for list pages, the documents it lists.
+# The release whose tag is <name> supplies an entry's video and podcast files.
+# Adding a subpage means adding its directory and one line here.
+collections:
+  home:  { output: true }
+  books: { output: true }
+  media: { output: true }
+  bio:   { output: true }
+  extra: { output: true }
+
 defaults:
-  - scope:
-      path: "danger-docs"
-    values:
-      noindex: true
+  - scope: { path: "" }
+    values: { layout: default }

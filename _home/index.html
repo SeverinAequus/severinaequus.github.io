@@ -1,0 +1,72 @@
+---
+title: Home
+nav_order: 1
+permalink: /
+---
+{%- assign nav_pages = "" | split: "" -%}
+{%- for c in site.collections -%}
+  {%- for d in c.docs -%}
+    {%- if d.nav_order and d.url != page.url -%}{%- assign nav_pages = nav_pages | push: d -%}{%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign nav_pages = nav_pages | sort: "nav_order" -%}
+
+<h1 class="page-title">Severin Aequus</h1>
+
+<p class="lede">
+  Technical and social ethicist just trying to make the world a somewhat more tolerable nightmare.
+</p>
+
+<h2>The Books</h2>
+
+<div class="cards">
+  <section class="card">
+    <h3>Liber Luminis</h3>
+    <p>Builds the framework: the less-discussed questions initiates have early on, and exactly what it takes to become an Adept.</p>
+    <p class="card-links">
+      <a href="https://www.amazon.com/gp/product/B0GGJQPG1T">English</a>
+      <a href="https://www.amazon.com/dp/products/B0GJR5YV9T">Español</a>
+      <a href="https://www.goodreads.com/book/show/246531717-liber-luminis">Goodreads</a>
+    </p>
+  </section>
+  <section class="card">
+    <h3>Liber Umbrae</h3>
+    <p>Uses that framework on the difficult questions, with the autobiographical subplot in full force.</p>
+    <p class="card-links">
+      <a href="https://www.amazon.com/gp/product/B0GFXZ8C6K">English</a>
+      <a href="https://www.amazon.com/dp/product/B0GJQWX8TJ">Español</a>
+      <a href="https://www.goodreads.com/book/show/246517883-liber-umbrae">Goodreads</a>
+    </p>
+  </section>
+</div>
+
+<p class="more-links">
+  <a href="{{ '/books/' | relative_url }}">More about the books</a>
+  <a href="https://www.amazon.com/dp/B0GGJ1W3NF">The entire series on Amazon</a>
+</p>
+
+<h2>Occult AI Explorer</h2>
+
+<p>
+  A free Google Notebook with an AI expert on my philosophy, built from both books and their supplements.
+  Use it as a personal initiation checkpoint: share where you are on your journey, ask questions,
+  and get advice on next steps.
+</p>
+<p class="more-links">
+  <a href="https://notebook.google.com/notebook/b39c086a-fe53-40c4-af91-d343043a37ea" target="_blank" rel="noopener noreferrer">Open the Occult AI Explorer</a>
+</p>
+
+<h2>On This Site</h2>
+
+<ul class="site-map">
+  {%- for d in nav_pages %}
+  <li><a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a>{% if d.summary %}: {{ d.summary }}{% endif %}</li>
+  {%- endfor %}
+</ul>
+
+<h2>Find Me Elsewhere</h2>
+
+<ul class="site-map">
+  <li><a href="https://www.goodreads.com/author/show/67711775.Severin_Aequus">Goodreads author profile</a></li>
+  <li><a href="https://linktr.ee/severin_aequus">LinkTree</a>: every link in one place</li>
+</ul>

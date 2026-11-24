@@ -1,0 +1,104 @@
+---
+layout: default
+---
+{%- comment -%}
+  Shared layout for list subpages. It lists every .md, .pdf and .txt file in
+  this page's collection directory (_<name>/), one entry per base name, sorted
+  by title when the site is built. Files that share a base name become extra
+  links on the same entry: [Web Page] for .md, then [PDF], then [TXT].
+  In the browser, entry-list.js adds the filter box, the copy-link buttons and
+  any .mp4/.m4a with the same base name from the GitHub release tagged <name>.
+
+  Records are "<sort key> <base>|<ext>|<url>". The sort key has its spaces
+  replaced by "!" so the space after it sorts before any title character,
+  which keeps "Gnosticism" ahead of "Gnosticism for Dummies".
+{%- endcomment -%}
+{%- assign coll = site.collections | where: "label", page.collection | first -%}
+{%- assign records = "" | split: "" -%}
+{%- assign has_md = false -%}{%- assign has_txt = false -%}
+
+{%- for f in coll.files -%}
+  {%- assign ext = f.extname | downcase -%}
+  {%- if ext == ".pdf" or ext == ".txt" or ext == ".md" -%}
+    {%- assign base_len = f.name.size | minus: f.extname.size -%}
+    {%- assign base = f.name | slice: 0, base_len -%}
+    {%- assign key = base | replace: "_", " " | downcase | replace: " ", "!" -%}
+    {%- if ext == ".txt" -%}{%- assign has_txt = true -%}{%- endif -%}
+    {%- capture rec -%}{{ key }} {{ base }}|{{ ext }}|/{{ coll.label }}/{{ f.name }}{%- endcapture -%}
+    {%- assign records = records | push: rec -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for d in coll.docs -%}
+  {%- assign ext = d.extname | downcase -%}
+  {%- if ext == ".md" and d.url != page.url -%}
+    {%- assign name = d.path | split: "/" | last -%}
+    {%- assign base_len = name.size | minus: d.extname.size -%}
+    {%- assign base = name | slice: 0, base_len -%}
+    {%- assign key = base | replace: "_", " " | downcase | replace: " ", "!" -%}
+    {%- assign has_md = true -%}
+    {%- capture rec -%}{{ key }} {{ base }}|.md|{{ d.url }}{%- endcapture -%}
+    {%- assign records = records | push: rec -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign records = records | sort -%}
+{%- assign keys = "" | split: "" -%}
+{%- for r in records -%}
+  {%- assign k = r | split: " " | first -%}
+  {%- assign keys = keys | push: k -%}
+{%- endfor -%}
+{%- assign keys = keys | uniq %}
+
+{{ content }}
+
+<p class="entry-help">
+  {%- if has_md %}
+  Web Page links open the essay as a page on this site.<br>
+  {%- endif %}
+  PDF links will open in a new tab and attempt to invoke your browser's PDF reader extension, if configured.<br>
+  {%- if has_txt %}
+  TXT links will open as plain text in a new tab.<br>
+  {%- endif %}
+  Video and audio links will open in a new tab and play using your browser's native media player.<br>
+  If Safari isn't working, use Chrome.
+</p>
+
+<div class="entry-filter" hidden>
+  <label for="entry-filter-input">Filter by title</label>
+  <input id="entry-filter-input" type="search" placeholder="Filter by title…" autocomplete="off" spellcheck="false">
+  <p class="entry-filter-status" aria-live="polite"></p>
+</div>
+
+<div class="entry-list" data-repo="{{ site.repository }}" data-release="{{ page.collection }}">
+{%- for k in keys %}
+  {%- assign first = true -%}
+  {%- for r in records -%}
+    {%- assign rk = r | split: " " | first -%}
+    {%- if rk == k -%}
+      {%- assign fields = r | remove_first: rk | remove_first: " " | split: "|" -%}
+      {%- assign base = fields[0] -%}{%- assign ext = fields[1] -%}{%- assign url = fields[2] -%}
+      {%- if first -%}
+        {%- assign first = false -%}
+        {%- assign title = base | replace: "_", " " %}
+  <div class="entry" id="{{ base | slugify }}" data-base="{{ base | escape }}">
+    <h3><a class="entry-anchor" href="#{{ base | slugify }}">{{ title | escape }}</a><button type="button" class="entry-copy" title="Copy link to this essay" aria-label="Copy link to {{ title | escape }}" hidden><svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></h3>
+    <div class="entry-links">
+      {%- endif -%}
+      {%- case ext -%}
+        {%- when ".md" %}
+      <a href="{{ url | relative_url }}">[Web Page]</a>
+        {%- when ".pdf" %}
+      <a href="{{ url | relative_url }}" target="_blank" rel="noopener">[PDF]</a>
+        {%- when ".txt" %}
+      <a href="{{ url | relative_url }}" target="_blank" rel="noopener">[TXT]</a>
+      {%- endcase -%}
+    {%- endif -%}
+  {%- endfor %}
+    </div>
+  </div>
+{%- endfor %}
+  <p class="entry-empty" hidden>No titles match your filter.</p>
+</div>
+
+<script src="{{ '/assets/js/entry-list.js' | relative_url }}" defer></script>
